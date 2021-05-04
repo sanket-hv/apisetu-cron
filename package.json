@@ -1,0 +1,23 @@
+{
+  "name": "apisetu",
+  "version": "1.0.0",
+  "description": "This is the app for finding vaccination slot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "api",
+    "vaccination",
+    "slot",
+    "booking"
+  ],
+  "author": "sanket vanani",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cron": "^1.8.2",
+    "express": "^4.17.1",
+    "twilio": "^3.30.0"
+  }
+}
