@@ -9,18 +9,24 @@ exports.searchForSlot = async () => {
         var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
         var yyyy = today.getFullYear();
 
-        tomorrow = dd + '-' + mm + '-' + yyyy;
+        var tomorrow = dd + '-' + mm + '-' + yyyy;
         console.log(tomorrow)
 
-        const sessionAvailable = await axios.get(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByDistrict?district_id=165&date=${tomorrow}`);
+        const centers = await axios.get(`https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode=395010&date=${tomorrow}`);
 
-        const sessions = sessionAvailable.data.sessions
-        if (sessions.length > 0) {
-            sessions.forEach(element => {
-                if (element.min_age_limit == 18) {
-                    console.log("Slots available for 18+", element.name, element.address, new Date().toISOString())
-                }
-                console.log(element.min_age_limit)
+        const centersList = centers.data.centers
+        if (centersList.length > 0) {
+            centersList.forEach(element => {
+
+                element.sessions.forEach(ele => {
+                    if (ele.min_age_limit == 18 && ele.available_capacity > 0) {
+                        console.log("---------------age 18 slot available----------------")
+                    }
+                    else {
+                        console.log("Slot not available")
+                    }
+                })
+
             });
         }
     } catch (error) {
