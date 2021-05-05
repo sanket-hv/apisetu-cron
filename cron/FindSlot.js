@@ -55,7 +55,7 @@ exports.searchForSlot006 = async () => {
 
                 element.sessions.forEach(ele => {
                     if (ele.min_age_limit == 18 && ele.available_capacity > 0) {
-                        console.log("---------------age 18 slot available 395006----------------", element.name, element.address, new Date().toLocaleTimeString())
+                        console.log("---------------age 18 slot available 395006----------------", element.name, element.address, "Availablity ", ele.available_capacity, new Date().toLocaleTimeString())
                     }
                     else {
                         console.log("Slot not available")
